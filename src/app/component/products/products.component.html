@@ -1,0 +1,58 @@
+<div class="row">
+    <div class="col-12 text-right">
+        <button routerLink="/products/addProduct" mat-raised-button color="primary">Add Product</button>
+    </div>
+
+
+    <div class="col-md-4">
+        <ul class="list group" *ngIf="products.length > 0; else noProducts">
+            <li
+  [routerLink]="[product.pid]" routerLinkActive="active-product"
+  class="list-group-item d-flex align-items-center"
+  *ngFor="let product of products; trackBy: trackByProductId" >
+
+  <img
+    [src]="product.image"
+    [alt]="product.pname"
+    width="60"
+    height="60"
+    class="rounded mr-3">
+
+  <div class="flex-grow-1">
+    <h4 class="mb-1">{{ product.pname }}</h4>
+
+    <small
+      class="badge"
+      [ngClass]="{
+        'badge-primary': product.pstatus === 'Dispatched',
+        'badge-success': product.pstatus === 'Delivered',
+        'badge-warning': product.pstatus === 'In-Progress'
+      }">
+      {{ product.pstatus }}
+    </small>
+  </div>
+
+</li>
+        </ul>
+    </div>
+    <!-- <div class="col-md-4">
+        <ul class="list group">
+            <li 
+            [routerLink]="[product.pid]"
+            class="list-group-item" *ngFor="let product of products">
+                {{product.pname}} {{product.pid}}
+        </li>
+        </ul>
+    </div> -->
+    <div class="col-md-8">
+        <router-outlet></router-outlet>
+    </div>
+
+  <ng-template #noProducts>
+  <div class="alert alert-info">
+    No Products Available
+  </div>
+</ng-template>
+
+
+</div>

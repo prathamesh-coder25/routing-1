@@ -1,0 +1,20 @@
+
+<div class="card" *ngIf="productObj">
+
+     <img
+        [src]="productObj.image"
+        [alt]="productObj.pname"
+        class="card-img-top mobile-img">
+    <div class="card-body">
+        <p>
+            The Product is {{productObj.pname}} and its status is <strong>{{productObj.pstatus}}</strong>
+        </p>
+    </div>
+    <div class="card-footer d-flex justify-content-between">
+        <button 
+        [routerLink]="['/products', productid, 'edit']"
+        class="mr-3" mat-raised-button color="primary">Edit</button>
+
+        <button (click)="onRemove()" mat-raised-button color="warn">Remove</button>
+    </div>
+</div>
