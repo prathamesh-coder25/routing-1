@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Iproduct } from 'src/app/models/product';
 import { ProductsService } from 'src/app/services/products.service';
 
@@ -12,8 +12,11 @@ export class ProductsComponent implements OnInit {
   products: Array<Iproduct> = []
   constructor(
     private _productService: ProductsService,
-    private _router: Router
-  ) { }
+    private _router: Router,
+    private _routes : ActivatedRoute
+  ) { 
+    this.products = this._routes.snapshot.data['products']
+  }
 
   ngOnInit(): void {
     this._productService.fetchProducts()

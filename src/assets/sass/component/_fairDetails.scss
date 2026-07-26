@@ -1,0 +1,30 @@
+.banner {
+    height: 350px;
+    position: relative;
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    .banner {
+        h1 {
+            margin-bottom: 28px;
+            font-size: 3rem;
+            font-weight: 700;
+        }
+    }
+
+    .TypeAndDate {
+        display: inline-block;
+        margin-top: 8px;
+    }
+
+    figcaption {
+        position: absolute;
+        left: 30px;
+        bottom: 30px;
+        color: #fff;
+        z-index: 2;
+    }
+
+}

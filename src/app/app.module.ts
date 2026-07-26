@@ -14,6 +14,13 @@ import { ProductFormComponent } from './component/products/product-form/product-
 import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './material/material.module';
 import { GetConfirmComponent } from './component/get-confirm/get-confirm.component';
+import { UserFormComponent } from './component/users/user-form/user-form.component';
+import { UserDetailsComponent } from './component/users/user-details/user-details.component';
+import { PageNotFoundComponent } from './component/page-not-found/page-not-found.component';
+import { FairCardComponent } from './component/fairs/fair-card/fair-card.component';
+import { FairDetailsComponent } from './component/fairs/fair-details/fair-details.component';
+import { AuthComponent } from './component/auth/auth.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -26,13 +33,20 @@ import { GetConfirmComponent } from './component/get-confirm/get-confirm.compone
     ProductSComponent,
     ProductFormComponent,
     GetConfirmComponent,
+    UserFormComponent,
+    UserDetailsComponent,
+    PageNotFoundComponent,
+    FairCardComponent,
+    FairDetailsComponent,
+    AuthComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    MaterialModule
+    MaterialModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

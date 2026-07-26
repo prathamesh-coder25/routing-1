@@ -1,0 +1,79 @@
+<div class="loading-overlay" *ngIf="isLoading">
+    <div class="loading-content">
+        <mat-spinner diameter="50"></mat-spinner>
+        <p>Logging in...</p>
+    </div>
+</div>
+
+<main class="main-auth">
+    <ng-container *ngIf="!allreadyHasAccount">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="font-weight-bold">Sign Up</h2>
+                <form [formGroup]="signUpForm" class="mb-2" (ngSubmit)="onSignUp()">
+                    <div class="form-group">
+                        <label for="email">Email*</label>
+                        <input type="text" formControlName="email" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password*</label>
+                        <input type="text" formControlName="password" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="userRole">User Role*</label>
+                        <select formControlName="userRole" class="form-control">
+                            <option value="buyer">Buyer</option>
+                            <option value="admin">Admin</option>
+                            <option value="superAdmin">Super Admin</option>
+                        </select>
+                    </div>
+
+                    <button mat-raised-button color="primary" class="w-100">Sign Up</button>
+                </form>
+                <a href="javascript:;" (click)="allreadyHasAccount = true"> Already have account</a>
+            </div>
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="allreadyHasAccount">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="font-weight-bold">Log In</h2>
+                <form [formGroup]="loginForm" class="mb-2" (ngSubmit)="onLogin()">
+                    <div class="form-group">
+                        <label for="email">Email*</label>
+                        <input type="text" formControlName="email" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password*</label>
+
+                        <div class="password-wrapper">
+
+                            <input class="form-control" [type]="hidePassword ? 'password' : 'text'"
+                                formControlName="password">
+
+                            <button type="button" class="toggle-password" (click)="hidePassword = !hidePassword">
+
+                                <mat-icon>
+                                    {{ hidePassword ? 'visibility' : 'visibility_off' }}
+                                </mat-icon>
+
+                            </button>
+
+                        </div>
+                    </div>
+                    <button mat-raised-button color="primary" class="w-100" type="submit"
+                        [disabled]="isLoading || loginForm.invalid">
+
+                        Log In
+
+                    </button>
+                </form>
+                <a href="javascript:;" (click)="allreadyHasAccount = false">Don't Have account</a>
+            </div>
+        </div>
+    </ng-container>
+</main>
